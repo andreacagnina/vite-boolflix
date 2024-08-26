@@ -1,11 +1,11 @@
 <script>
-import SearchBar from './components/SearchBar.vue';
+import MainApp from './components/MainApp.vue';
 import { store } from './store.js';
 import axios from 'axios';
 
 export default {
     components: {
-        SearchBar,
+        MainApp,
     },
     data() {
         return {
@@ -19,7 +19,7 @@ methods: {
 </script>
 
 <template>
-<SearchBar />
+<MainApp />
 </template>
 
 <style lang="scss">

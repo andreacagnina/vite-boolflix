@@ -1,7 +1,11 @@
 <script>
+import SearchBar from './SearchBar.vue';
 import { store } from '../store.js';
 
 export default {
+    components: {
+        SearchBar,
+    },
     data() {
         return {
         store,
@@ -11,9 +15,7 @@ export default {
 </script>
 
 <template>
-    <div>
-        <input type="text" name="searchbar" id="search"> <button>Invia</button>
-    </div>
+<SearchBar/>
 </template>
 
 <style lang="scss" scoped>
