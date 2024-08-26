@@ -15,7 +15,9 @@ export default {
 </script>
 
 <template>
+<header>
 <SearchBar/>
+</header>
 </template>
 
 <style lang="scss" scoped>
