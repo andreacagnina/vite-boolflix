@@ -1,10 +1,10 @@
 <script>
-
+import SearchBar from './SearchBar.vue';
 import { store } from '../store.js';
 
 export default {
     components: {
-
+        SearchBar,
     },
     data() {
         return {
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-
+<SearchBar/>
 </template>
 
 <style lang="scss" scoped>

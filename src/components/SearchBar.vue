@@ -5,6 +5,7 @@ export default {
     data() {
         return {
         store,
+        inputTitle:"",
         }
     },
 }
@@ -12,7 +13,7 @@ export default {
 
 <template>
     <div>
-        <input type="text" name="searchbar" id="search"> <button>Invia</button>
+        <input type="text" required v-model="inputTitle" placeholder="Inserisci un titolo di un film"> <button>Invia</button>
     </div>
 </template>
 
