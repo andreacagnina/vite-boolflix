@@ -7,6 +7,7 @@ export default {
     components: {
         MainApp,
         HeaderApp,
+
     },
     data() {
         return {
