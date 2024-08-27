@@ -10,17 +10,36 @@ export default {
     },
 
     methods: {
-        getFlagCLass(languageCode) {
-            const langToCountry = {
-                en: 'gb',
-                ja: 'jp',
-                ko: 'kr',
-                zh: 'cn',
-                hi: 'in',
-                ta: 'in',
-                ur: 'pk',
-            };
-            return langToCountry[languageCode] || languageCode;
+    //     getFlagCLass(languageCode) {
+    //         const langToCountry = {
+    //             en: 'gb',
+    //             ja: 'jp',
+    //             ko: 'kr',
+    //             zh: 'cn',
+    //             hi: 'in',
+    //             ta: 'in',
+    //             ur: 'pk',
+    //         };
+    //         return langToCountry[languageCode] || languageCode;
+    // },
+        getFlagClass(languageCode) {
+            switch (languageCode){
+                case 'en':
+                    return 'gb';
+                case 'ja':
+                    return 'jp';
+                case 'ko':
+                    return 'kr';
+                case 'zh':
+                    return 'cn';
+                case 'hi':
+                case 'ta':
+                    return 'in';
+                case 'ur':
+                    return 'pk';
+                default:
+                    return languageCode;
+        }
     },
 }
 }
@@ -31,7 +50,7 @@ export default {
         <h2>Film trovati:</h2>
         <ul>
             <li v-for="item in store.movieResults" :key="item.id">
-            <strong>Titolo:</strong> {{ item.title || item.name }} <strong>Titolo originale:</strong> {{ item.original_title || item.original_name }} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagCLass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
+            <strong>Titolo:</strong> {{ item.title}} <strong>Titolo originale:</strong> {{ item.original_title}} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
             </li>
         </ul>
     </div>
@@ -39,7 +58,7 @@ export default {
         <h2>Serie TV trovate:</h2>
         <ul>
             <li v-for="item in store.seriesResults" :key="item.id">
-            <strong>Titolo:</strong> {{ item.title || item.name }} <strong>Titolo originale:</strong> {{ item.original_title || item.original_name }} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagCLass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
+            <strong>Titolo:</strong> {{ item.name }} <strong>Titolo originale:</strong> {{ item.original_name }} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
             </li>
         </ul>
     </div>
