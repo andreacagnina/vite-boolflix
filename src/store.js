@@ -7,6 +7,7 @@ export const store = reactive({
     apiKey: '9ecb0ac4f7544fe9fe3331cabc921213',
     results: [],
 
+
     searchMovie(movieName) {
         return axios.get(`${this.apiUrlMovie}?api_key=${this.apiKey}&query=${movieName}`).then(response => { return response.data.results });
 
