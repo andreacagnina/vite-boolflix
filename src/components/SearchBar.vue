@@ -10,16 +10,18 @@ export default {
     },
     methods: {
         searchContent() {
-                store.searchMovie(this.searchQuery)
-                    .then(movieResults => {
-                        return store.searchSeries(this.searchQuery)
-                            .then(seriesResults => {
-                                store.results = [...movieResults, ...seriesResults];
-                            });
-                    })
+            store.searchMovie(this.searchQuery).then(movieResults => {
+
+                store.movieResults = movieResults;
+
+                return store.searchSeries(this.searchQuery);
+            })
+            .then(seriesResults => {
+                store.seriesResults = seriesResults;
+            })
             }
         }
-    }
+}
 </script>
 
 <template>
