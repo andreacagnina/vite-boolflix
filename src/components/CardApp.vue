@@ -10,18 +10,6 @@ export default {
     },
 
     methods: {
-    //     getFlagCLass(languageCode) {
-    //         const langToCountry = {
-    //             en: 'gb',
-    //             ja: 'jp',
-    //             ko: 'kr',
-    //             zh: 'cn',
-    //             hi: 'in',
-    //             ta: 'in',
-    //             ur: 'pk',
-    //         };
-    //         return langToCountry[languageCode] || languageCode;
-    // },
         getFlagClass(languageCode) {
             switch (languageCode){
                 case 'en':
@@ -50,6 +38,7 @@ export default {
         <h2>Film trovati:</h2>
         <ul>
             <li v-for="item in store.movieResults" :key="item.id">
+                <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://picsum.photos/342/513`">
             <strong>Titolo:</strong> {{ item.title}} <strong>Titolo originale:</strong> {{ item.original_title}} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
             </li>
         </ul>
@@ -58,6 +47,7 @@ export default {
         <h2>Serie TV trovate:</h2>
         <ul>
             <li v-for="item in store.seriesResults" :key="item.id">
+                <img :src="item.poster_path ? (`https://image.tmdb.org/t/p/w342/${item.poster_path}`) : `https://picsum.photos/342/513`">
             <strong>Titolo:</strong> {{ item.name }} <strong>Titolo originale:</strong> {{ item.original_name }} <strong>Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}}) <strong>Voto:</strong> ({{item.vote_average}})
             </li>
         </ul>
