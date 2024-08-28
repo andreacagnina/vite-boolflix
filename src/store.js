@@ -1,6 +1,6 @@
 import { reactive } from "vue";
 import axios from "axios";
-
+// 0) Ottengo la parte iniziale del link dei film e delle SerieTV, salvo una variabile la mia chiave e creo 2 array vuoti che userò dopo. Dopo avere installato la libreria axios, credo 2 funzioni con paramentro che mi restituiscono il link dinamico composto dai primi 2 elementi e dal valore inserito nel campo Input.
 export const store = reactive({
     apiUrlMovie: "https://api.themoviedb.org/3/search/movie",
     apiUrlSeries: "https://api.themoviedb.org/3/search/tv",
