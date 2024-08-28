@@ -1,7 +1,6 @@
 <script>
 import HeaderApp from './components/HeaderApp.vue';
 import MainApp from './components/MainApp.vue';
-import { store } from './store.js';
 
 export default {
     components: {
@@ -11,7 +10,6 @@ export default {
     },
     data() {
         return {
-        store,
         }
     },
 methods: {
