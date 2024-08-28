@@ -29,10 +29,21 @@ CardSeriesApp
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3">
+                <div class="col-12" v-if="store.movieResults.length > 0">
                     <div class="content">
-                        <CardMoviesApp />
+                        <h2>Lista dei film di tuo interesse:</h2>
                     </div> 
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <CardMoviesApp />
+                </div>
+                <div class="col-12" v-if="store.seriesResults.length > 0">
+                    <div class="content">
+                        <h2>Lista delle serie TV di tuo interesse:</h2>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <CardSeriesApp />
                 </div>
             </div>
 </div>
