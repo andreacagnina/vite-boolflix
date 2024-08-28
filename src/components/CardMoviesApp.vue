@@ -35,7 +35,8 @@ export default {
 </script>
 
 <template>
-        <div class="card" v-for="item in store.movieResults" :key="`movie-${item.id}`">
+    <div class="col-12 col-md-6 col-lg-3" v-for="item in store.movieResults" :key="`movie-${item.id}`">
+        <div class="card mt-4">
             <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`" class="card-img-top" >
             <div class="hiddenCard">
                 <div><strong> Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}})</div>
@@ -50,6 +51,7 @@ export default {
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
