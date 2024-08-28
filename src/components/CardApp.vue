@@ -37,13 +37,20 @@ export default {
 
 <template>
     <!-- 3) Ora che i risultati sono salvati su 2 array dello store, mostro il contenuto dei risultati solo se la loro lunghezza contiene degli elementi è maggiore di 0. Ciclo gli array dando delle chiavi univoche e tramite binding con operatore ternario assegno se presente nell'obj l'img di copertina del film e della serieTV altrimenti uso una img-toppa. Uso un v-show per mostrare il contenuto del titolo originale solo se questo è diverso dal titolo per evitare ripetizioni sgradevoli alla vista. -->
-    <div v-if="store.movieResults.length > 0"> 
-        <h2>Film trovati: {{store.movieResults.length}} </h2>
+
+    <!-- <div v-if="store.movieResults.length > 0"> 
+        <h2>Film trovati: {{store.movieResults.length}} </h2> -->
+
+        <div class="card" style="width: 18rem;" v-for="item in store.movieResults" :key="`movie-${item.id}`">
+            <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`" class="card-img-top" >
+        </div>
+
+
         <ul>
             <li v-for="item in store.movieResults" :key="`movie-${item.id}`">
-                <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`"> <br>
+                <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`"> 
 
-            <div><strong>Titolo:</strong> {{ item.title}}</div>
+            <!-- <div><strong>Titolo:</strong> {{ item.title}}</div> -->
 
             <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong>{{ item.original_title}}</div>
 <!-- 4) Dopo avere installato una libreria per avere le bandiere dei paesi del mondo, creo delle icone dinamiche modificando la classe di uno span in cui richiamo una funzione a cui passo il parametro della lingua originale del film/serieTV. -->
@@ -55,7 +62,8 @@ export default {
             </div>
             </li>
         </ul>
-    </div>
+    <!-- </div> -->
+
     <div v-if="store.seriesResults.length > 0"> 
         <h2>Serie TV trovate: {{store.seriesResults.length}} </h2>
         <ul>

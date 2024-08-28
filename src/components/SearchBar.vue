@@ -28,14 +28,10 @@ export default {
 
 <template>
     <!-- 1) creo un campo input e un bottone. Al press di invio e al click del bottone lancio un funzione -->
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" aria-label="Search" v-model="searchQuery" placeholder="Cerca un film o una serie..." @keypress.enter="searchContent">
-        <button class="btn btn-outline-light" type="submit"@click="searchContent">Cerca</button>
-    </form>
-    <!-- <div>
-        <input v-model="searchQuery" placeholder="Cerca un film o una serie..." @keypress.enter="searchContent"/>
-        <button @click="searchContent">Cerca</button>
-    </div> -->
+    <div>
+        <input class="me-2 p-1" v-model="searchQuery" placeholder="Cerca un film o una serie..." @keypress.enter="searchContent"/>
+        <button class="btn btn-outline-light align-baseline" @click="searchContent">Cerca</button>
+    </div>
 </template>
 
 <style lang="scss" scoped>
