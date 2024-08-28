@@ -1,15 +1,18 @@
 <script>
-import CardApp from './CardApp.vue';
+import CardSeriesApp from './CardSeriesApp.vue';
+import CardMoviesApp from './CardMoviesApp.vue';
 import { store } from '../store.js';
 // 7)uso il mio componente card all'interno del main
 export default {
     components: {
-CardApp,
+CardMoviesApp,
+CardSeriesApp
     },
     data() {
         return {
             store,
-            CardApp,
+            CardMoviesApp,
+            CardSeriesApp,
         };
     },
 }
@@ -28,7 +31,7 @@ CardApp,
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="content">
-                        <CardApp />
+                        <CardMoviesApp />
                     </div> 
                 </div>
             </div>
