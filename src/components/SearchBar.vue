@@ -9,18 +9,31 @@ export default {
         };
     },
     methods: {
-// 2) con questa funzione vado nello store dove viene fatta la mia chiamata API dei film e passo il valore inserito nell'input come param, dopo viene restituita una risposta asincrona con then e il risultato viene salvato nell'array movieResults dello store. Lo stesso viene fatto per le serie TV con un return che ha il ruolo di concatenare i 2 risultati.
-        searchContent() {
-            store.searchMovie(this.searchQuery).then(movieResults => {
-
-                store.movieResults = movieResults;
-
-                return store.searchSeries(this.searchQuery);
+        // 2) uso una funzione wrapper che richiama 2 funzioni diverse
+        searchContent(){
+            this.searchMovies();
+            this.searchSeries();
+        },
+        searchMovies(){
+            store.searchMovie(this.searchQuery).then(movieResults => { store.movieResults = movieResults;        
             })
-            .then(seriesResults => {
-                store.seriesResults = seriesResults;
+                },
+                searchSeries(){
+                    store.searchSeries(this.searchQuery).then(seriesResults => { store.seriesResults = seriesResults;        
             })
-            }
+                },
+// 2.5) una soluzione più complicata con questa funzione vado nello store dove viene fatta la mia chiamata API dei film e passo il valore inserito nell'input come param, dopo viene restituita una risposta asincrona con then e il risultato viene salvato nell'array movieResults dello store. Lo stesso viene fatto per le serie TV con un return che ha il ruolo di concatenare i 2 risultati.
+        // searchContent() {
+        //     store.searchMovie(this.searchQuery).then(movieResults => {
+
+        //         store.movieResults = movieResults;
+
+        //         return store.searchSeries(this.searchQuery);
+        //     })
+        //     .then(seriesResults => {
+        //         store.seriesResults = seriesResults;
+        //     })
+        //     }
         }
 }
 </script>

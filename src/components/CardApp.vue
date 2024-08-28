@@ -41,7 +41,7 @@ export default {
         <h2>Film trovati:</h2>
         <ul>
             <li v-for="item in store.movieResults" :key="`movie-${item.id}`">
-                <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://picsum.photos/342/513`"> <br>
+                <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`"> <br>
 
             <div><strong>Titolo:</strong> {{ item.title}}</div>
 
@@ -60,7 +60,7 @@ export default {
         <h2>Serie TV trovate:</h2>
         <ul>
             <li v-for="item in store.seriesResults" :key="item.id">
-                <img :src="item.poster_path ? (`https://image.tmdb.org/t/p/w342/${item.poster_path}`) : `https://picsum.photos/342/513`"> <br>
+                <img :src="item.poster_path ? (`https://image.tmdb.org/t/p/w342/${item.poster_path}`) : `https://placehold.co/342x513?text=Copertina+non+trovata`"> <br>
 
             <div><strong>Titolo:</strong> {{ item.name }} </div>
 
