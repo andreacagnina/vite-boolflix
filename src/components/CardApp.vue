@@ -41,30 +41,50 @@ export default {
     <!-- <div v-if="store.movieResults.length > 0"> 
         <h2>Film trovati: {{store.movieResults.length}} </h2> -->
 
-        <div class="card" style="width: 18rem;" v-for="item in store.movieResults" :key="`movie-${item.id}`">
+        <div class="card" v-for="item in store.movieResults" :key="`movie-${item.id}`">
             <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`" class="card-img-top" >
+            <div class="hiddenCard">
+                <div><strong>Titolo:</strong> {{item.title}}</div>
+                <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong> {{ item.original_title}}</div>
+                <div><strong>Voto:</strong> <span>{{Math.round(item.vote_average / 2)}}</span>&nbsp;
+                    <span v-for="(star, index) in Math.round(item.vote_average / 2)" :key="`FullStars-${index}`"><i class="fas fa-star golden"></i></span>
+                    <span v-for="(star, index) in (5 - Math.round(item.vote_average / 2))" :key="`EmptyStars-${index}`"><i class="far fa-star golden"></i></span> 
+                </div>
+                <div v-if="item.overview">
+                    <strong>Overview:</strong> {{item.overview}}
+                </div>
+            </div>
         </div>
 
 
-        <ul>
+        <!-- <ul>
             <li v-for="item in store.movieResults" :key="`movie-${item.id}`">
                 <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`"> 
 
-            <!-- <div><strong>Titolo:</strong> {{ item.title}}</div> -->
+            <div><strong>Titolo:</strong> {{ item.title}}</div>
 
-            <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong>{{ item.original_title}}</div>
+            <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong>{{ item.original_title}}</div> -->
+
+
 <!-- 4) Dopo avere installato una libreria per avere le bandiere dei paesi del mondo, creo delle icone dinamiche modificando la classe di uno span in cui richiamo una funzione a cui passo il parametro della lingua originale del film/serieTV. -->
-            <div><strong> Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}})</div>
+
+
+            <!-- <div><strong> Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}})</div> -->
+
+
 <!-- 6) Recupero la media dei voti che va da 0 a 10 e la divido per 2 in modo da avere un voto che va da 0 a 5 e stampo il risultato. Faccio 2 cicli, il primo per stampare delle stelle piene e utilizzo math.round perchè arrotonda all'intero più vicino (es. 4.2 a 4, 4.8 a 5), assegno delle chiavi uniche e dopo avere installato la libreria di fontawesome, metto l'icona delle stelle piene. A seguire, le stelle vuote saranno semplicemente il voto max (5) - il numero di stelle piene -->
+
+<!-- 
             <div><strong>Voto:</strong> <span>{{Math.round(item.vote_average / 2)}}</span> 
             <span v-for="(star, index) in Math.round(item.vote_average / 2)" :key="`FullStars-${index}`"> <i class="fas fa-star golden"></i></span> 
             <span v-for="(star, index) in (5 - Math.round(item.vote_average / 2))" :key="`EmptyStars-${index}`"><i class="far fa-star golden"></i></span> 
             </div>
             </li>
-        </ul>
+        </ul> -->
+
     <!-- </div> -->
 
-    <div v-if="store.seriesResults.length > 0"> 
+    <!-- <div v-if="store.seriesResults.length > 0"> 
         <h2>Serie TV trovate: {{store.seriesResults.length}} </h2>
         <ul>
             <li v-for="item in store.seriesResults" :key="item.id">
@@ -82,13 +102,31 @@ export default {
         </div>
             </li>
         </ul>
-    </div>
+    </div> -->
 
 </template>
 
 <style lang="scss" scoped>
 .golden {
     color:gold;
+}
+
+.hiddenCard {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card:hover .hiddenCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
     
