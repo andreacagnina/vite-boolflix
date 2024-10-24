@@ -4,15 +4,14 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
             store,
         };
     },
-
     methods: {
         getFlagClass(languageCode) {
-            switch (languageCode){
+            switch (languageCode) {
                 case 'en':
                     return 'gb';
                 case 'ja':
@@ -28,26 +27,37 @@ export default {
                     return 'pk';
                 default:
                     return languageCode;
-        }
-    },
-}
+            }
+        },
+    }
 }
 </script>
 
 <template>
+    <div>
+        <div>
+
+        </div>
+    </div>
     <div class="col-12 col-md-6 col-lg-3" v-for="item in store.movieResults" :key="`movie-${item.id}`">
         <div class="card mt-4">
-            <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`" class="card-img-top" >
+            <img :src="item.poster_path ? `https://image.tmdb.org/t/p/w342/${item.poster_path}` : `https://placehold.co/342x513?text=Copertina+non+trovata`"
+                class="card-img-top">
             <div class="hiddenCard">
-                <div><strong> Lingua originale:</strong> <span :class="`fi fi-${getFlagClass(item.original_language)}`"></span> ({{item.original_language.toUpperCase()}})</div>
-                <div><strong>Titolo:</strong> {{item.title}}</div>
-                <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong> {{ item.original_title}}</div>
-                <div><strong>Voto:</strong> <span>{{Math.round(item.vote_average / 2)}}</span>&nbsp;
-                    <span v-for="(star, index) in Math.round(item.vote_average / 2)" :key="`FullStars-${index}`"><i class="fas fa-star golden"></i></span>
-                    <span v-for="(star, index) in (5 - Math.round(item.vote_average / 2))" :key="`EmptyStars-${index}`"><i class="far fa-star golden"></i></span> 
+                <div><strong> Lingua originale:</strong> <span
+                        :class="`fi fi-${getFlagClass(item.original_language)}`"></span>
+                    ({{ item.original_language.toUpperCase() }})</div>
+                <div><strong>Titolo:</strong> {{ item.title }}</div>
+                <div v-show="item.title !== item.original_title"><strong>Titolo originale:</strong> {{
+                    item.original_title}}</div>
+                <div><strong>Voto:</strong> <span>{{ Math.round(item.vote_average / 2) }}</span>&nbsp;
+                    <span v-for="(star, index) in Math.round(item.vote_average / 2)" :key="`FullStars-${index}`"><i
+                            class="fas fa-star golden"></i></span>
+                    <span v-for="(star, index) in (5 - Math.round(item.vote_average / 2))"
+                        :key="`EmptyStars-${index}`"><i class="far fa-star golden"></i></span>
                 </div>
                 <div v-if="item.overview" class="overflow">
-                    <strong>Overview:</strong> {{item.overview}}
+                    <strong>Overview:</strong> {{ item.overview }}
                 </div>
             </div>
         </div>
@@ -56,7 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .golden {
-    color:gold;
+    color: gold;
 }
 
 .hiddenCard {
@@ -71,7 +81,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.card:hover .hiddenCard{
+.card:hover .hiddenCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,6 +91,4 @@ export default {
 .overflow {
     overflow-y: auto;
 }
-
-    
 </style>
